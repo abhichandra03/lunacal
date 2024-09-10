@@ -33,11 +33,6 @@ const SecondWidget = () => {
     }
     setSelectedImage("");
 
-    setInterval(() => {
-      if (imageRef.current != null) {
-        imageRef.current.scrollLeft += 100;
-      }
-    }, 1000);
   }, [selectedImage]);
 
   return (
