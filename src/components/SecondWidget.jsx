@@ -3,9 +3,14 @@ import questionMark from "./../assests/questionMark.png";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa6";
 
 import logo from "./../assests/img.png";
+import image1 from './../assests/image1.jpeg'
+import image2 from './../assests/image2.jpeg'
+import image3 from './../assests/image3.jpeg'
+import image4 from './../assests/image4.jpeg'
+import image5 from './../assests/image5.jpeg'
 
 const SecondWidget = () => {
-  const [images, setImages] = useState([logo, logo, logo]);
+  const [images, setImages] = useState([image1, image2, image3, image4, image5]);
   const [selectedImage, setSelectedImage] = useState("");
   const imageRef = useRef(null);
 
@@ -27,6 +32,12 @@ const SecondWidget = () => {
       setImages((prevItems) => [...prevItems, selectedImage]);
     }
     setSelectedImage("");
+
+    setInterval(() => {
+      if (imageRef.current != null) {
+        imageRef.current.scrollLeft += 100;
+      }
+    }, 1000);
   }, [selectedImage]);
 
   return (
@@ -73,16 +84,16 @@ const SecondWidget = () => {
         </div>
         <div
           ref={imageRef}
-          className="flex flex-nowrap justify-between w-full overflow-x-scroll no-scrollbar scroll-smooth"
+          className="relative flex flex-nowrap items-center justify-between p-4 w-full h-[70%] overflow-x-scroll no-scrollbar scroll-smooth "
         >
           {images.map((image, id) => (
             <div
               key={id}
-              className="flex w-full min-w-[190px] h-[179px] items-center mx-2 mb-4 rounded-2xl"
+              className="static flex w-full min-w-[190px] h-[179px] items-center mx-2 rounded-2xl shadow-[4px_5px_30px_5px_#101213,-5px_-3px_30px_-10px_#96BEE7] z-10 hover:scale-110 duration-500 hover:rotate-[-5deg] "
             >
               <img
                 src={image}
-                className="w-full h-full object-cover rounded-3xl"
+                className=" w-full h-full object-cover rounded-3xl grayscale hover:grayscale-0 "
                 alt=""
               ></img>
             </div>

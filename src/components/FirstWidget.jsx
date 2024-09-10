@@ -2,49 +2,44 @@ import React, { useState } from "react";
 import questionMark from "./../assests/questionMark.png";
 
 const FirstWidget = () => {
-  const [activeItem, setActiveItem] = useState("About");
+  let [activeItem, setActiveItem] = useState("About");
 
   const handleClick = (item) => {
     setActiveItem(item);
   };
-
+  console.log(activeItem);
 
   return (
     <div className="relative w-[720px] h-[316px] flex flex-col justify-around items-center">
       <div className="relative flex flex-col w-full h-full justify-around items-center  px-12 bg-[#363C43] shadow-[5.67px_5.67px_3.78px_0px_rgba(0,0,0,0.4)] rounded-2xl">
         <div className="flex w-full h-[64px] rounded-3xl bg-[#171717]  text-[#A3ADB2] shadow-[inset_rgba(0,0,0,0.25)_0px_4.96px_12.4px_2.48px]">
-          <ul className="flex w-full justify-around items-center">
-            <li
-              className={`flex justify-center rounded-3xl cursor-pointer w-1/3 mx-2 p-4 ${
-                activeItem === "About"
-                  ? `bg-[#28292F] text-white shadow-[10px_10px_40px_10px_rgba(0,0,0,0.5)]`
-                  : `bg-inherit`
-              }`}
+          <div className="relative flex w-full justify-around items-center">
+            <div
+              className={`flex justify-center rounded-3xl cursor-pointer w-1/3 mx-2 p-4 transition-all duration-500 ease-in-out bg-size-300 bg-pos-0 z-10 bg-gradient-to-l  from-[#2727281E] from-50% to-[#96BEE70F] to-50% ${activeItem=='About'? `hover:bg-pos-0` : `hover:bg-pos-100`}`}
               onClick={() => handleClick("About")}
             >
               About Me
-            </li>
-            <li
-              className={`flex justify-center rounded-3xl cursor-pointer w-1/3 mx-2 p-4 ${
-                activeItem === "Experiences"
-                  ? `bg-[#28292F] text-white shadow-[10px_10px_40px_10px_rgba(0,0,0,0.5)]`
-                  : `bg-inherit`
-              }`}
+            </div>
+            <div
+              className={`flex  justify-center rounded-3xl cursor-pointer w-1/3 mx-2 p-4 transition-all duration-500 ease-in-out bg-size-300 bg-pos-0 bg-gradient-to-l  from-[#2727281E] from-50% to-[#96BEE70F] to-50% z-10 ${activeItem=='Experiences'? `hover:bg-pos-0` : `hover:bg-pos-100`}`}
               onClick={() => handleClick("Experiences")}
             >
               Experiences
-            </li>
-            <li
-              className={`flex justify-center rounded-3xl cursor-pointer w-1/3 mx-2 p-4 ${
-                activeItem === "Recommended"
-                  ? `bg-[#28292F] text-white shadow-[10px_10px_40px_10px_rgba(0,0,0,0.5)]`
-                  : `bg-inherit`
-              }`}
+            </div>
+            <div
+              className={`flex justify-center rounded-3xl cursor-pointer w-1/3 mx-2 p-4 transition-all duration-500 ease-in-out bg-size-300 bg-pos-0 bg-gradient-to-l  from-[#2727281E] from-50% to-[#96BEE70F] to-50% z-10 ${activeItem=='Recommended'? `hover:bg-pos-0` : `hover:bg-pos-100`}`}
               onClick={() => handleClick("Recommended")}
             >
               Recommended
-            </li>
-          </ul>
+            </div>
+            <span
+              className={`absolute bg-[#28292F] z-0 top-1 rounded-3xl  transition-all duration-500 ease-in-out w-[200px] h-[90%]  shadow-[10px_10px_40px_10px_rgba(0,0,0,0.5)] ${
+                activeItem == "About" ? `left-1` : ``
+              } ${activeItem == "Recommended" ? `left-2/3` : ``} ${
+                activeItem == "Experiences" ? `left-1/3` : ``
+              }`}
+            ></span>
+          </div>
         </div>
         <div className="flex w-full h-[175px]">
           <p className="flex text-[#969696]  overflow-y-scroll scrollbar">
